@@ -9,7 +9,8 @@
   "scripts": {
     "build": "babel --out-dir lib src",
     "build:watch": "npm run build -- --watch",
-    "prepublish": "rm -rf lib/* && npm run build"
+    "prepublish": "rm -rf lib/* && npm run build",
+    "postinstall": "npm run prepublish"
   },
   "dependencies": {
     "express": "^4.15.2",
