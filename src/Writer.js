@@ -1,9 +1,9 @@
 /* Simple wrapper around fs so I can concentrate on what's going on */
-import fs from 'fs'
-import path from 'path'
-import { sync as mkDirPSync } from 'mkdirp'
+const fs = require('fs')
+const path = require('path')
+const { sync: mkDirPSync } = require('mkdirp')
 
-export default class Writer {
+module.exports = class Writer {
   constructor(baseDir) {
     this.baseDir = baseDir
   }

@@ -1,7 +1,7 @@
 /* Spin up a simple express server */
-import express from 'express'
+const express = require('express')
 
-export default class Server {
+module.exports = class Server {
   constructor(baseDir, publicPath, port) {
     const app = express()
 

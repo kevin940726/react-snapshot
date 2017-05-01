@@ -1,10 +1,10 @@
 /* Loads a URL then starts looking for links.
   Emits a full page whenever a new link is found. */
-import url from 'url'
-import snapshot from './snapshot'
-import jsdom from 'jsdom'
+const url = require('url')
+const snapshot = require('./snapshot')
+const jsdom = require('jsdom')
 
-export default class Crawler {
+module.exports = class Crawler {
   constructor(baseUrl) {
     this.baseUrl = baseUrl
     const { protocol, host, path } = url.parse(baseUrl)

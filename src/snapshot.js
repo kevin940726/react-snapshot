@@ -1,8 +1,8 @@
 /* Wraps a jsdom call and returns the full page */
 
-import jsdom from 'jsdom'
+const jsdom = require('jsdom')
 
-export default (protocol, host, path) => {
+module.exports = (protocol, host, path) => {
   return new Promise((resolve, reject) => {
     jsdom.env({
       url: `${protocol}//${host}${path}`,
