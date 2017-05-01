@@ -1,14 +1,14 @@
-import path from 'path'
-import fs from 'fs'
-import url from 'url'
-import Server from './Server'
-import Crawler from './Crawler'
-import Writer from './Writer'
+const path = require('path')
+const fs = require('fs')
+const url = require('url')
+const Server = require('./Server')
+const Crawler = require('./Crawler')
+const Writer = require('./Writer')
 
-const pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
+const pkg = require(path.join(process.cwd(), 'package.json'))
 const publicPath = pkg.homepage ? url.parse(pkg.homepage).pathname : '/'
 
-export default () => {
+module.exports = () => {
   const baseDir = path.resolve('./build')
   const writer = new Writer(baseDir)
   writer.move('index.html', '200.html')

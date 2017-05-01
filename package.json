@@ -44,5 +44,8 @@
   ],
   "author": "Glen Maddern",
   "license": "ISC",
-  "homepage": "https://github.com/geelen/react-snapshot"
+  "homepage": "https://github.com/geelen/react-snapshot",
+  "engines": {
+    "node" : ">=6.10.2"
+  }
 }
