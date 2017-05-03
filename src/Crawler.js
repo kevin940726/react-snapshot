@@ -6,7 +6,7 @@ const jsdom = require('jsdom')
 const path = require('path')
 
 const pkg = require(path.join(process.cwd(), 'package.json'));
-const paths = pkg.reactSnapshot.paths
+const paths = pkg.reactSnapshot && pkg.reactSnapshot.paths ? pkg.reactSnapshot.paths : [];
 
 module.exports = class Crawler {
   constructor(baseUrl) {
