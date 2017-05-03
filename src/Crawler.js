@@ -3,6 +3,7 @@
 const url = require('url')
 const snapshot = require('./snapshot')
 const jsdom = require('jsdom')
+const path = require('path')
 
 const pkg = require(path.join(process.cwd(), 'package.json'));
 const paths = pkg.reactSnapshot.paths
