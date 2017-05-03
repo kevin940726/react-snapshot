@@ -4,13 +4,16 @@ const url = require('url')
 const snapshot = require('./snapshot')
 const jsdom = require('jsdom')
 
+const pkg = require(path.join(process.cwd(), 'package.json'));
+const paths = pkg.reactSnapshot.paths
+
 module.exports = class Crawler {
   constructor(baseUrl) {
     this.baseUrl = baseUrl
     const { protocol, host, path } = url.parse(baseUrl)
     this.protocol = protocol
     this.host = host
-    this.paths = [path]
+    this.paths = [path,...paths]
     this.processed = {}
   }
 
@@ -49,8 +52,9 @@ module.exports = class Crawler {
     Object.keys(tagAttributeMap).forEach(tagName => {
       const urlAttribute = tagAttributeMap[tagName]
       Array.from(document.querySelectorAll(`${tagName}[${urlAttribute}]`)).forEach(element => {
+        if (element.getAttribute('target') === '_blank') return
         const { protocol, host, path } = url.parse(element.getAttribute(urlAttribute))
-        if (protocol || host) return
+        if (protocol || host || path===null) return;
         const relativePath = url.resolve(currentPath, path)
         if (!this.processed[relativePath]) this.paths.push(relativePath)
       })
